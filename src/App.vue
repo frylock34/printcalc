@@ -154,10 +154,10 @@ export default class App extends Vue {
   }
 
   get worksCost(): number {
-    if (this.printingMaterial === this.qualityItems[0].value ||
-      this.printingMaterial === this.qualityItems[1].value) { return 2; }
-    else if (this.printingMaterial === this.qualityItems[2].value) { return 3; }
-    else if (this.printingMaterial === this.qualityItems[3].value) { return 5; }
+    if (this.printingMaterial === this.materialItems[0].value ||
+      this.printingMaterial === this.materialItems[1].value) { return 2; }
+    else if (this.printingMaterial === this.materialItems[2].value) { return 3; }
+    else if (this.printingMaterial === this.materialItems[3].value) { return 5; }
     else { return 0; }
   }
 
