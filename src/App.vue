@@ -132,7 +132,7 @@
                   <v-flex xs12>
                     <p class="display-2 text-xs-center">Итог: {{ total }} руб.</p>
                     <p class="display-1 text-xs-center">Стоимость 1гр.: {{pricePerGr}} руб.</p>
-                    <p class="text-xs-center">Выплаты сотруднику: {{ workerTotal }} руб.</p>
+                    
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -171,17 +171,12 @@ export default class App extends Vue {
   get postworkTotal(): number {
     return this.postworkCost * this.postworkTypeSelected;
   }
-  get workerTotal(): number {
-    return this.modelingTotal +
-      this.worksCost * this.printingMass * this.modelsCount +
-      this.postworkCost * (this.postworkTypeSelected != null ? this.postworkTypeSelected : 0) * this.modelsCount;
-  }
   get total(): number {
     const totalPrint = this.printingTotal * this.modelsCount < 300 ? 300 : this.printingTotal * this.modelsCount;
     return (this.modelingTotal + (this.postworkTotal * this.modelsCount) + totalPrint) * (1 - this.sale / 100);
   }
   get pricePerGr(): number {
-    return this.total / this.printingMass;
+    return this.total / (this.printingMass * this.modelsCount);
   }
   public printingMaterial: number = 5;
   public printingElectricityCost: number = 1;
